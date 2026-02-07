@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-color: #13120B;
+            --text-main: #ffffff;
+            --text-secondary: #a1a1a1;
+            --accent-btn: #ffffff;
+            --accent-btn-text: #000000;
+            --border-color: #333;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        /* --- Header start  --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 40px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(19, 18, 11, 0.8);
+            /* backdrop-filter: blur(10px); */
+            z-index: 100;
+            /* border-bottom: 1px solid rgba(255,255,255,0.05); */
+        }
+
+        .img1 {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+            /* margin-right: 8px; */
+            /* margin-right: 34px; */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: -0.5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* margin-right: 300px; */
+        }
+
+        .logo:hover {
+            opacity: 0.5;
+            color: #444;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--text-secondary);
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sign-in {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            padding: 6px 16px;
+            text-align: center;
+            border: 1px solid #333;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .header-download {
+            font-size: 14px;
+            background: #fff;
+            font-weight: 500;
+            color: #000;
+            border-radius: 100px;
+            padding: 6px 16px;
+            border: 1px solid #333;
+            white-space: nowrap;
+        }
+
+        /* --- Hero start --- */
+        .hero {
+            padding: 120px 24px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 23px;
+
+        }
+
+        h1 {
+            font-size: 26px;
+            line-height: 1.2;
+            font-weight: 500;
+            max-width: 900px;
+            margin-bottom: 23px;
+        }
+
+        .hero-cta {
+            background-color: var(--accent-btn);
+            color: var(--accent-btn-text);
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            /* display: inline-flex; */
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 60px;
+            /* margin-left: 25px; */
+
+        }
+
+        .hero-cta span {
+            font-size: 1.2rem;
+            line-height: 0;
+            margin-bottom: 3px;
+        }
+
+        .dummyimg {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        /* --- TRUSTED BY SECTION --- */
+        .trusted-section {
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            /* width: 200px; */
+        }
+
+        .trusted-label {
+            color: #ffffff;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+        }
+
+        .logo-card {
+            background: #111;
+            /* Dark card background */
+            border: 1px solid #222;
+            width: 100%;
+            height: 90px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.1rem;
+            /* transition: border-color 0.2s; */
+        }
+
+        .logo-card:hover {
+            border-color: #444;
+            color: #888;
+        }
+
+        /* /* --- FEATURE  */
+        .feature-section {
+            padding: 75px 26px;
+            background-color: #222;
+            border-radius: .5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .feature-text h2 {
+            margin-left: 23px;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 500;
+            width: 500px;
+        }
+
+        .feature-text p {
+            font-size: 1.25rem;
+            margin-left: 23px;
+            color: #888;
+            margin-bottom: 30px;
+            width: 500px;
+            line-height: 1.5;
+        }
+
+        .learn-more-link {
+            font-size: 1.25rem;
+            margin-left: 23px;
+            color: red;
+            margin-bottom: 30px;
+            width: 500px;
+            line-height: 1.5;
+        }
+
+        .right-contains {
+            /* margin-left: 232px; */
+            width: 100%;
+        }
+
+        .section-2 {
+            margin-top: 80px;
+        }
+
+        .img3 {
+            margin-left: 23px;
+        }
+
+        .img2 {
+            margin-right: 22px;
+        }
+
+        .section-3 {
+            margin-top: 80px;
+        }
+
+        /* card sectin */
+        .testimonials-section {
+            padding: 100px 40px;
+            background-color: #0c0c0c;
+            color: #fff;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 60px;
+            letter-spacing: -0.5px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .testi-card {
+            background-color: #191919;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            min-height: 240px;
+            transition: background-color 0.2s;
+        }
+
+        .testi-card:hover {
+            background-color: #202020;
+
+        }
+        .testi-text {
+            font-size: 15px;
+            color: #a1a1a1;
+
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .user-role {
+            font-size: 13px;
+            color: #666;
+            margin-top: 2px;
+        }
+        /* //footer */
+         .footer-wrapper {
+            width: 100%;
+            background-color: #0c0c0c;
+            padding: 4rem 2rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Subtle top separation */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- TOP CTA SECTION --- */
+        .cta-section {
+            text-align: center;
+            margin-bottom: 6rem;
+            padding-top: 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            color: #eee;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 0.8rem 1.5rem;
+            border-radius: 9999px; /* Pill shape */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .download-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .download-btn span {
+            margin-left: 8px;
+            font-size: 1.1rem;
+        }
+
+        /* --- LINKS GRID SECTION --- */
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap; /* Allows columns to drop down without media queries */
+            justify-content: space-between;
+            gap: 2.5rem;
+            margin-bottom: 6rem;
+        }
+
+        .link-column {
+            flex: 1 1 140px; /* Grow: 1, Shrink: 1, Base width: 140px */
+            min-width: 120px;
+        }
+
+        .link-column h4 {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 1.2rem;
+            font-weight: 500;
+        }
+
+        .link-column ul {
+            list-style: none;
+        }
+
+        .link-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .link-column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .link-column ul li a:hover {
+            color: #ffffff;
+        }
+
+        /* --- BOTTOM BAR --- */
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .bottom-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .soc-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .soc-icon {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #666;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .soc-icon::after {
+            content: "✓";
+            position: absolute;
+            top: -2px;
+            left: 2px;
+            font-size: 8px;
+        }
+
+        .bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #1a1a1a;
+            padding: 0.4rem 0.8rem;
+            border-radius: 99px;
+            border: 1px solid #333;
+        }
+
+        .icon-btn {
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .icon-btn:hover { opacity: 1; }
+
+        .lang-select {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img class="img2" src="/image/logo.png" alt="Logo">
+            CURSOR
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Enterprise</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Resources</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#" class="sign-in">Sign in</a>
+            <a href="#" class="header-download">Download</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Built to make you extraordinarily productive,<br>Cursor is the best way to code with AI.</h1>
+
+            <a href="#" class="hero-cta">
+                Download for macOS <span>&darr;</span>
+            </a>
+
+            <div>
+                <img class="dummyimg" src="/image/dummy.png" alt="Interface Preview">
+            </div>
+        </section>
+    </main>
+    <section class="trusted-section">
+        <div class="trusted-label">Trusted every day by millions of professional developers.</div>
+        <div class="logo-grid">
+            <div class="logo-card" style="font-family: sans-serif;">stripe</div>
+            <div class="logo-card" style="font-family: sans-serif; letter-spacing: -1px;">OpenAI</div>
+            <div class="logo-card" style="font-family: sans-serif;">Linear</div>
+            <div class="logo-card" style="font-family: serif; color: #fff;">DATADOG</div>
+            <div class="logo-card" style="font-family: sans-serif; font-weight: 900;">NVIDIA</div>
+            <div class="logo-card" style="font-family: sans-serif;">Figma</div>
+            <div class="logo-card" style="font-family: sans-serif;">ramp</div>
+            <div class="logo-card" style="font-family: sans-serif; font-weight: 800; color:#fff;">Adobe</div>
+        </div>
+    </section>
+    <!-- //section-1 -->
+    <section class="feature-section">
+        <div class="feature-text">
+            <h2>Agent turns ideas into code</h2>
+            <p>A human-AI programmer, orders of magnitude more effective than any developer alone.</p>
+            <a href="#" class="learn-more-link">Learn about Agent <span>&rarr;</span></a>
+        </div>
+        <div class="right-contains">
+            <img class="dummyimg img2" src="/image/img2.png" alt="">
+        </div>
+    </section>
+    <!-- //section-2 -->
+    <section class="feature-section section-2">
+        <div class="right-contains">
+            <img class="dummyimg img3" src="/image/imgrename.png" alt="">
+        </div>
+        <div class="feature-text">
+            <h2>Magicallly accurate autocompelete</h2>
+            <p>Our custom Tab model predicts your naxt action with striking speed and precision.</p>
+            <a href="#" class="learn-more-link">Learn about tab <span>&rarr;</span></a>
+        </div>
+    </section>
+    <!-- //section-3 -->
+    <section class="feature-section section-3">
+        <div class="feature-text">
+            <h2>Everywhere software get builts</h2>
+            <p>Curosr is in github reviewing your PRs, a teammate is slack, and anywhere else you work</p>
+            <a href="#" class="learn-more-link">Learn about Cursor ecosystem<span>&rarr;</span></a>
+        </div>
+        <div class="right-contains">
+            <img class="dummyimg img2" src="/image/img4.png" alt="">
+        </div>
+    </section>
+
+    <!-- // card section -->
+    <section class="testimonials-section">
+        <h2 class="section-title">The new way to build software.</h2>
+
+        <div class="testimonials-grid">
+            <div class="testi-card">
+                <p class="testi-text">"It was night and day from one batch to another, adoption went from single digits
+                    to over 80%. It just spread like wildfire, all the best builders were using Cursor."</p>
+                <div class="user-profile">
+                    <img src="/image/user.png" alt="Diana Hu"
+                        class="avatar">
+                    <div class="user-info">
+                        <div class="user-name">Diana Hu</div>
+                        <div class="user-role">General Partner, Y Combinator</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <p class="testi-text">"The most useful AI tool that I currently pay for, hands down, is Cursor. It's
+                    fast, autocompletes when and where you need it to, handles brackets properly, sensible keyboard
+                    shortcuts... everything is well put together."</p>
+                <div class="user-profile">
+                    <img src="/image/user.png"alt="shadcn"
+                        class="avatar">
+                    <div class="user-info">
+                        <div class="user-name">shadcn</div>
+                        <div class="user-role">Creator of shadcn/ui</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <p class="testi-text">"The best LLM applications have an autonomy slider: you control how much
+                    independence to give the AI. In Cursor, you can do Tab completion, Cmd+K for targeted edits, or you
+                    can let it rip with the full autonomy agentic version."</p>
+                <div class="user-profile">
+                  <img src="/image/user.png"
+                        alt="Andrej Karpathy" class="avatar">
+                    <div class="user-info">
+                        <div class="user-name">Andrej Karpathy</div>
+                        <div class="user-role">CEO, Eureka Labs</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <p class="testi-text">"Cursor quickly grew from hundreds to thousands of extremely enthusiastic Stripe
+                    employees. We spend more on R&D and software creation than any other undertaking, and there's
+                    significant economic outcomes when making that process more efficient and productive."</p>
+                <div class="user-profile">
+                    <img src="/image/user.png"
+                        alt="Patrick Collison" class="avatar">
+                    <div class="user-info">
+                        <div class="user-name">Patrick Collison</div>
+                        <div class="user-role">Co-Founder & CEO, Stripe</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <p class="testi-text">"It's official.<br><br>I hate vibe coding.<br>I love Cursor tab
+                    coding.<br><br>It's wild."</p>
+                <div class="user-profile">
+                   <img src="/image/user.png"
+                        alt="ThePrimeagen" class="avatar">
+                    <div class="user-info">
+                        <div class="user-name">ThePrimeagen</div>
+                        <div class="user-role">@ThePrimeagen</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <p class="testi-text">"It's definitely becoming more fun to be a programmer. It's less about digging
+                    through pages and more about what you want to happen. We are at the 1% of what's possible, and it's
+                    in interactive experiences like Cursor where models like GPT-5 shine brightest."</p>
+                <div class="user-profile">
+                    <img src="/image/user.png"
+                        alt="Greg Brockman" class="avatar">
+                    <div class="user-info">
+                        <div class="user-name">Greg Brockman</div>
+                        <div class="user-role">President, OpenAI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //footer -->
+    <footer class="footer-wrapper">
+        <div class="container">
+            
+            <div class="cta-section">
+                <h2>Try Cursor now.</h2>
+                <a href="#" class="download-btn">
+                    Download for macOS <span>↓</span>
+                </a>
+            </div>
+
+            <div class="footer-links">
+                <div class="link-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Enterprise</a></li>
+                        <li><a href="#">Web Agents</a></li>
+                        <li><a href="#">Bugbot</a></li>
+                        <li><a href="#">CLI</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Download</a></li>
+                        <li><a href="#">Changelog</a></li>
+                        <li><a href="#">Docs</a></li>
+                        <li><a href="#">Learn</a></li>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Workshops</a></li>
+                        <li><a href="#">Students</a></li>
+                        <li><a href="#">Brand</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Data Use</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">X</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="bottom-left">
+                    <span>© 2026 Cursor</span>
+                    <span class="soc-badge"><span class="soc-icon"></span> SOC 2 Certified</span>
+                </div>
+                <div class="bottom-right">
+                    <span class="icon-btn" title="System Theme">🖥️</span>
+                    <span class="icon-btn" title="Light/Dark">☀️</span>
+                    <span class="icon-btn" title="Dark">🌙</span>
+                    <span style="opacity: 0.3">|</span>
+                    <div class="lang-select icon-btn">
+                        <span>English</span>
+                        <span style="font-size: 0.7em">▼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
